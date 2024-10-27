@@ -7,6 +7,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddCoffe from "./components/AddCoffe.jsx";
 import UpdateCoffe from "./components/UpdateCoffe.jsx";
 import Root from "./components/Root.jsx";
+import AuthProvider from "./components/provider/Authprovider.jsx";
+import SingUp from "./components/SingUp.jsx";
+import SingIn from "./components/SingIn.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +31,22 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/coffe/${params.id}`),
       },
+      {
+        path: "/registation",
+        element: <SingUp></SingUp>,
+      },
+      {
+        path: "/login",
+        element: <SingIn></SingIn>,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

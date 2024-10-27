@@ -6,8 +6,8 @@ const Navbar = () => {
       <div className=" space-x-8 font-serif font-bold ">
         <Link to="/">Home</Link>
         <Link to="/addCoffe">Add coffe</Link>
-        <Link>Login</Link>
-        <Link>Register</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/registation">Register</Link>
       </div>
     </div>
   );
