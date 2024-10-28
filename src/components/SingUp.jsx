@@ -11,8 +11,10 @@ const SingUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const confirmPassword = form.confrimpassword.value;
-    console.log(email, password);
-    console.log(createUser);
+    const photo = form.photo.value;
+
+    // console.log(email, password);
+    // console.log(createUser);
 
     if (password !== confirmPassword) {
       console.log("Passwords do not match");
@@ -21,17 +23,22 @@ const SingUp = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        const userEmail = user.email;
+        const creationbDate = user.metadata.creationTime;
+        const userData = { userEmail, creationbDate, photo };
+        console.log(userData);
+
         fetch("http://localhost:3000/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(user),
+
+          body: JSON.stringify(userData),
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            console.log("user data", data);
           });
 
         console.log("user create succesfully");
@@ -84,11 +91,24 @@ const SingUp = () => {
                 className="input input-bordered w-full"
               />
             </label>
-            <div className="mt-6">
-              <button className="btn join-item w-full bg-green-600">
-                Register
-              </button>
-            </div>
+          </div>
+          <div className=" justify-center ">
+            <label className="label">
+              <span className="label-text">photo</span>
+            </label>
+            <label className="input-group">
+              <input
+                type="text"
+                name="photo"
+                placeholder=" enter your photo url"
+                className="input input-bordered w-full"
+              />
+            </label>
+          </div>
+          <div className="mt-6">
+            <button className="btn join-item w-full bg-green-600">
+              Register
+            </button>
           </div>
         </form>
       </div>
