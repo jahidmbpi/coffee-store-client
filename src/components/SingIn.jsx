@@ -70,19 +70,7 @@ const SingIn = () => {
               />
             </label>
           </div>
-          {/* <div className=" justify-center  ">
-            <label className="label">
-              <span className="label-text"> confrim password</span>
-            </label>
-            <label className="input-group">
-              <input
-                type="password"
-                name="confrimpassword"
-                placeholder="confrim password"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div> */}
+
           <div className="mt-6">
             <button className="btn join-item w-full bg-green-600">
               Register

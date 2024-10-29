@@ -10,6 +10,7 @@ import Root from "./components/Root.jsx";
 import AuthProvider from "./components/provider/Authprovider.jsx";
 import SingUp from "./components/SingUp.jsx";
 import SingIn from "./components/SingIn.jsx";
+import Users from "./components/Users.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <SingIn></SingIn>,
+      },
+      {
+        path: "/user",
+        element: <Users></Users>,
+        loader: () => fetch(`http://localhost:3000/user`),
       },
     ],
   },
